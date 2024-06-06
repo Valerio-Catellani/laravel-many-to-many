@@ -30,12 +30,6 @@ class TechnologyController extends Controller
      */
     public function store(Request $request)
     {
-        if (!$request->has('color')) {
-            $request['color'] = '#000000';
-        }
-        if (!$request->has('icon')) {
-            $request['icon'] = 'fa-solid fa-laptop-code';
-        }
         $validated = $request->validate([
             'name' => 'required|max:255|min:3',
             'color' => 'nullable|min:7|max:7',
@@ -50,6 +44,13 @@ class TechnologyController extends Controller
             'icon.max' => 'The field :attribute must be at most 255 characters.',
         ]);
         $validated["slug"] =  Technology::generateSlug($validated["name"]);
+
+        if (!$validated['color']) {
+            $validated['color'] = "#FFFFFF";
+        }
+        if (!$validated['icon']) {
+            $validated['icon'] = "fa-solid fa-laptop-code";
+        }
         $new_technology = new Technology();
         $new_technology->fill($validated);
         $new_technology->save();
@@ -68,17 +69,43 @@ class TechnologyController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Technology $technology)
+    public function edit($slug)
     {
-        //
+        $technology = Technology::where('slug', $slug)->firstOrFail();
+        return view("admin.technologies.edit", compact("technology"));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Technology $technology)
+    public function update(Request $request, $slug)
     {
-        //
+        $technology = Technology::where('slug', $slug)->first();
+        $validated = $request->validate([
+            'name' => 'required|max:255|min:3',
+            'color' => 'nullable|min:7|max:7',
+            'icon' => 'nullable|min:3|max:255'
+        ], [
+            'name.required' => 'The field :attribute is required.',
+            'name.min' => 'The field :attribute must be at least 3 characters.',
+            'name.max' => 'The field :attribute must be at most 255 characters.',
+            'color.min' => 'The field :attribute must be at least 7 characters.',
+            'color.max' => 'The field :attribute must be at most 7 characters.',
+            'icon.min' => 'The field :attribute must be at least 3 characters.',
+            'icon.max' => 'The field :attribute must be at most 255 characters.',
+        ]);
+        if (!$validated['color']) {
+            $validated['color'] = "#FFFFFF";
+        }
+        if (!$validated['icon']) {
+            $validated['icon'] = "fa-solid fa-laptop-code";
+        }
+        if ($technology->name != $validated["name"]) {
+            $validated["slug"] =  Technology::generateSlug($validated["name"]);
+        }
+        $technology->fill($validated);
+        $technology->update();
+        return redirect()->route("admin.technologies.index")->with('message', "Technology (id:{$technology->id}): {$technology->name} edit with success");
     }
 
     /**

@@ -103,7 +103,7 @@ class ProjectController extends Controller
         } else {
             $project->technologies()->sync([]);
         }
-        return redirect()->route("admin.projects.index")->with('message', "Project (id:{$project->id}): {$project->title} modificato con successo");
+        return redirect()->route("admin.projects.index")->with('message', "Project (id:{$project->id}): {$project->title} edit with success");
     }
 
     /**

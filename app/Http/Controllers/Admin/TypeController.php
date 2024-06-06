@@ -86,7 +86,7 @@ class TypeController extends Controller
         }
         $type->fill($validated);
         $type->update();
-        return redirect()->route("admin.types.index")->with('message', "Type (id:{$type->id}): {$type->name} modificato con successo");
+        return redirect()->route("admin.types.index")->with('message', "Type (id:{$type->id}): {$type->name} edit with success");
     }
 
     /**
