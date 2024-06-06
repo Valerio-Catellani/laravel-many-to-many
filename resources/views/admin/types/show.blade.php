@@ -9,8 +9,7 @@
             <h1 class="text-center hype-text-shadow text-white fw-bolder mb-5">All Projects for: {{ $type->name }} Type
             </h1>
             <div class="container">
-                <table id="projects-table"
-                    class="table table-dark table-hover shadow mb-2 mt-3 hype-unselectable hype-table-clickable">
+                <table id="projects-table" class="table table-dark table-hover shadow mb-2 mt-3 hype-unselectable">
                     <thead>
                         <tr>
                             <th scope="col">#id Project</th>
@@ -33,9 +32,15 @@
                                     @if ($project->technologies)
                                         <div class="d-flex align-items-center gap-3">
                                             @foreach ($project->technologies as $technology)
-                                                <i class="{{ $technology->icon }} fs-3 hype-text-shadow position-relative"
-                                                    style="color: {{ $technology->color }};">
-                                                </i>
+                                                <a class="tec-link hype-pointer position-relative"
+                                                    href="{{ route('admin.technologies.show', $technology->slug) }}"><i
+                                                        class="{{ $technology->icon }} fs-3 hype-text-shadow position-relative hype-hover-size"
+                                                        style="color: {{ $technology->color }};">
+                                                    </i>
+                                                    <div class="tec-info">
+                                                        {{ $technology->name }}
+                                                    </div>
+                                                </a>
                                             @endforeach
                                         </div>
                                     @else
@@ -45,13 +50,15 @@
 
                                 <td>
                                     <div class="d-flex justify-content-center">
-                                        <a href="{{ route('admin.projects.show', $project->slug) }}" class="table-icon m-1">
+                                        <a href="{{ route('admin.projects.show', $project->slug) }}"
+                                            class="table-icon m-1 text-decoration-none">
                                             <div class="icon-container">
                                                 <i
                                                     class=" fa-solid fa-eye fs-3 text-active-tertiary hype-text-shadow hype-hover-size"></i>
                                             </div>
                                         </a>
-                                        <a href="{{ route('admin.projects.edit', $project->slug) }}" class="table-icon m-1">
+                                        <a href="{{ route('admin.projects.edit', $project->slug) }}"
+                                            class="table-icon m-1 text-decoration-none">
                                             <div class="icon-container">
                                                 <i
                                                     class=" fa-solid fa-pen-to-square fs-3 text-active-tertiary hype-text-shadow hype-hover-size"></i>

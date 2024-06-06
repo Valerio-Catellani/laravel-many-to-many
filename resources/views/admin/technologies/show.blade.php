@@ -8,7 +8,7 @@
             <h1 class="text-center hype-text-shadow text-white fw-bolder mb-5">Technology: {{ $technology->name }}</h1>
             <div class="container">
                 <div class="row mb-5">
-                    <div class="col-4 d-flex align-items-center justify-content-center display-1">
+                    <div class="col-4 d-flex align-items-center justify-content-center technology-detail-img">
                         <i class="{{ $technology->icon }}" style="color: {{ $technology->color }}"></i>
                     </div>
                     <div class="col-8 d-flex flex-column text-white">
@@ -26,8 +26,7 @@
                     {{ $technology->name }} Type
                 </h2>
                 <div class="container mb-5">
-                    <table id="projects-table"
-                        class="table table-dark table-hover shadow mb-2 mt-3 hype-unselectable hype-table-clickable">
+                    <table id="projects-table" class="table table-dark table-hover shadow mb-2 mt-3 hype-unselectable">
                         <thead>
                             <tr>
                                 <th scope="col">#id Project</th>
@@ -48,9 +47,15 @@
                                         @if ($project->technologies)
                                             <div class="d-flex align-items-center gap-3">
                                                 @foreach ($project->technologies as $technology)
-                                                    <i class="{{ $technology->icon }} fs-3 hype-text-shadow position-relative"
-                                                        style="color: {{ $technology->color }};">
-                                                    </i>
+                                                    <a class="tec-link hype-pointer position-relative"
+                                                        href="{{ route('admin.technologies.show', $technology->slug) }}"><i
+                                                            class="{{ $technology->icon }} fs-3 hype-text-shadow position-relative hype-hover-size"
+                                                            style="color: {{ $technology->color }};">
+                                                        </i>
+                                                        <div class="tec-info">
+                                                            {{ $technology->name }}
+                                                        </div>
+                                                    </a>
                                                 @endforeach
                                             </div>
                                         @else
@@ -61,14 +66,14 @@
                                     <td>
                                         <div class="d-flex justify-content-center">
                                             <a href="{{ route('admin.projects.show', $project->slug) }}"
-                                                class="table-icon m-1">
+                                                class="table-icon m-1 text-decoration-none">
                                                 <div class="icon-container">
                                                     <i
                                                         class=" fa-solid fa-eye fs-3 text-active-tertiary hype-text-shadow hype-hover-size"></i>
                                                 </div>
                                             </a>
                                             <a href="{{ route('admin.projects.edit', $project->slug) }}"
-                                                class="table-icon m-1">
+                                                class="table-icon m-1 text-decoration-none">
                                                 <div class="icon-container">
                                                     <i
                                                         class=" fa-solid fa-pen-to-square fs-3 text-active-tertiary hype-text-shadow hype-hover-size"></i>
@@ -97,20 +102,21 @@
                     </table>
                 </div>
                 <div class="d-flex justify-content-center align-items-center gap-5 mt-auto">
-                    <a href="{{ route('admin.projects.index') }}">
+                    <a href="{{ route('admin.technologies.index') }}">
                         <i role="button" type="submit"
                             class="fa-solid fa-arrow-left fs-1 text-white hype-text-shadow hype-hover-size"></i>
                     </a>
-                    <a href="{{ route('admin.projects.edit', $project->slug) }}">
+                    <a href="{{ route('admin.technologies.edit', $technology->slug) }}">
                         <i role="button" type="submit"
-                            class="fa-solid fa-pen-to-square fs-1 text-active-tertiary hype-text-shadow hype-hover-size"></i>
+                            class="fa-solid fa-pen-to-square fs-1 text-active-tertiary hype-text-shadow hype-hover-size "></i>
                     </a>
-                    <form id="delete-form" action="{{ route('admin.projects.destroy', $project->id) }}" method="POST">
+                    <form id="delete-form" action="{{ route('admin.technologies.destroy', $technology->slug) }}"
+                        method="POST">
                         @csrf
                         @method('DELETE')
                         <button class="element-delete default-button text-active-primary hype-text-shadow fs-1"
-                            type="submit" data-element-id="{{ $project->id }}"
-                            data-element-title="{{ $project->title }}">
+                            type="submit" data-element-id="{{ $technology->id }}"
+                            data-element-title="{{ $technology->title }}">
                             <i class="fa-solid fa-trash-can "></i>
                         </button>
                     </form>

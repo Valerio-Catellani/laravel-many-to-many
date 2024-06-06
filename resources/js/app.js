@@ -186,3 +186,40 @@ if (image) {
         };
     });
 }
+
+
+
+
+document.querySelectorAll('.tec-link').forEach((element) => {
+    //let lunghezza = element.children[1].offsetWidth;
+    const tecInfo = element.children[1];
+    let lunghezza = tecInfo.offsetWidth;
+    console.log(lunghezza);
+    tecInfo.style.width = `0px`;
+
+    element.addEventListener('mouseenter', () => {
+        console.log(lunghezza);
+        tecInfo.style.padding = '0px 7.5px';
+        tecInfo.style.width = `${lunghezza + 20}px`;
+        console.log(tecInfo.style.width);
+    });
+
+
+    element.addEventListener('mouseleave', () => {
+        tecInfo.style.padding = '0px';
+        tecInfo.style.width = `0px`;
+
+    });
+});
+
+if (document.getElementById('icon-form')) {
+    document.getElementById('icon').addEventListener('input', (event) => {
+        console.log(event.target.value);
+        document.getElementById('tec-icon-preview').innerHTML = `<i class="${event.target.value}"></i>`;
+    })
+    document.getElementById('color').addEventListener('input', (event) => {
+        console.log(event.target.value);
+        document.getElementById('tec-icon-preview').style.color = `${event.target.value}`;
+        console.log(document.getElementById('tec-icon-preview').style.color);
+    })
+}

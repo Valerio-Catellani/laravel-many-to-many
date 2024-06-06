@@ -49,7 +49,7 @@
                                 <i role="button" type="submit"
                                     class="fa-solid fa-pen-to-square fs-1 text-active-tertiary hype-text-shadow hype-hover-size"></i>
                             </a>
-                            <form id="delete-form" action="{{ route('admin.projects.destroy', $project->id) }}"
+                            <form id="delete-form" action="{{ route('admin.projects.destroy', $project->slug) }}"
                                 method="POST">
                                 @csrf
                                 @method('DELETE')

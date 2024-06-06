@@ -18,9 +18,9 @@
                     <th scope="col">#id Technology</th>
                     <th scope="col">Technology Name</th>
                     <th scope="col" class="d-none d-xl-table-cell">Technology Slug</th>
-                    <th scope="col" class="d-none d-lg-table-cell">Hex Color</th>
-                    <th scope="col" class="d-none d-lg-table-cell">Icon</th>
-                    <th scope="col" class="d-none d-lg-table-cell">Icon Class</th>
+                    <th scope="col" class="d-none d-xl-table-cell">Hex Color</th>
+                    <th scope="col" class="d-none d-xl-table-cell">Icon</th>
+                    <th scope="col" class="d-none d-xl-table-cell">Icon Class</th>
                     <th scope="col" class=" text-center">
                         Amministration Actions</th>
                 </tr>

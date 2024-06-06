@@ -423,3 +423,38 @@ header {
         }
     }
 }
+
+/*Technologuies*/
+
+.technology-detail-img {
+    font-size: 20rem;
+
+    @media screen and (max-width: 1200px) {
+        font-size: 18rem;
+    }
+    @media screen and (max-width: 992px) {
+        font-size: 13rem;
+    }
+    @media screen and (max-width: 768px) {
+        font-size: 10rem;
+    }
+}
+
+.tec-link {
+    &:hover {
+        .tec-info {
+            transition: width 0.2s ease-out;
+        }
+    }
+    .tec-info {
+        background-color: beige;
+        text-decoration: none;
+        color: black;
+        position: absolute;
+        top: 20px;
+        left: 22px;
+        z-index: 100;
+
+        overflow: hidden;
+    }
+}

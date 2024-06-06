@@ -37,9 +37,9 @@ class TypeController extends Controller
         $validated = $request->validate([
             'name' => 'required|max:255|min:3'
         ], [
-            'title.required' => 'The field :attribute is required.',
-            'title.max' => 'The field :attribute must be no more than 255 characters.',
-            'title.min' => 'The field :attribute must be at least 3 characters.',
+            'name.required' => 'The field :attribute is required.',
+            'name.max' => 'The field :attribute must be no more than 255 characters.',
+            'name.min' => 'The field :attribute must be at least 3 characters.',
         ]);
         $validated["slug"] =  Type::generateSlug($validated["name"]);
         $new_type = new Type();
@@ -77,9 +77,9 @@ class TypeController extends Controller
         $validated = $request->validate([
             'name' => 'required|max:255|min:3'
         ], [
-            'title.required' => 'The field :attribute is required.',
-            'title.max' => 'The field :attribute must be no more than 255 characters.',
-            'title.min' => 'The field :attribute must be at least 3 characters.',
+            'name.required' => 'The field :attribute is required.',
+            'name.max' => 'The field :attribute must be no more than 255 characters.',
+            'name.min' => 'The field :attribute must be at least 3 characters.',
         ]);
         if ($type->name != $validated["name"]) {
             $validated["slug"] =  Type::generateSlug($validated["name"]);
@@ -96,6 +96,6 @@ class TypeController extends Controller
     {
         $type = Type::where('slug', $slug)->firstOrFail();
         $type->delete();
-        return redirect()->route('admin.types.index')->with('message', "Type (id:{$type->id}): {$type->name} eliminato con successo");
+        return redirect()->route('admin.types.index')->with('message', "Type (id:{$type->id}): {$type->name} deleted with success");
     }
 }

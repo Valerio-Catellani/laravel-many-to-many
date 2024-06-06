@@ -73,7 +73,7 @@ class ProjectController extends Controller
     public function edit($slug)
     {
         $types = Type::all();
-        $technologies = Type::all();
+        $technologies = Technology::all();
         $project = Project::where('slug', $slug)->firstOrFail();
         return view("admin.projects.edit", compact("project",  "types", "technologies"));
     }
@@ -114,6 +114,6 @@ class ProjectController extends Controller
         $project = Project::where('slug', $slug)->firstOrFail();
         //$project->technologies()->detach();
         $project->delete();
-        return redirect()->route('admin.projects.index')->with('message', "Project (id:{$project->id}): {$project->title} eliminato con successo");
+        return redirect()->route('admin.projects.index')->with('message', "Project (id:{$project->id}): {$project->title} deleted with success");
     }
 }
