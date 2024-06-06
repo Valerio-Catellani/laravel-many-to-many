@@ -39,7 +39,7 @@
         "name": "laravel",
         "slug": "laravel",
         "color": "#FF2D20",
-        "icon": "fas fa-laravel"
+        "icon": "fa-brands fa-laravel"
     },
     {
         "id": 7,

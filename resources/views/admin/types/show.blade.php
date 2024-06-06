@@ -5,7 +5,6 @@
 @section('content')
     <section class="container py-5">
 
-
         <div class="container rounded-2 hype-shadow-white p-5 background-gradient-color">
             <h1 class="text-center hype-text-shadow text-white fw-bolder mb-5">All Projects for: {{ $type->name }} Type
             </h1>
@@ -28,19 +27,22 @@
                                 <td><a>{{ $project->id }} </a></td>
                                 <td><a>{{ $project->title }}</a></td>
                                 <td class="d-none d-xl-table-cell"><a>{{ $project->created }}</a></td>
+
+
                                 <td class="d-none d-lg-table-cell">
                                     @if ($project->technologies)
-                                        <div class="d-flex align-items-center my-3 gap-3 ms-2">
+                                        <div class="d-flex align-items-center gap-3">
                                             @foreach ($project->technologies as $technology)
-                                                <span class="badge text-bg-danger">
-                                                    {{ $technology->name }}
-                                                </span>
+                                                <i class="{{ $technology->icon }} fs-3 hype-text-shadow position-relative"
+                                                    style="color: {{ $technology->color }};">
+                                                </i>
                                             @endforeach
                                         </div>
                                     @else
                                         <h6>No Technology</h6>
                                     @endif
                                 </td>
+
                                 <td>
                                     <div class="d-flex justify-content-center">
                                         <a href="{{ route('admin.projects.show', $project->slug) }}" class="table-icon m-1">

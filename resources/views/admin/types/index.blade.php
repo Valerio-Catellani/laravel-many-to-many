@@ -25,9 +25,9 @@
             <tbody>
                 @foreach ($types as $element)
                     <tr>
-                        <td><a>{{ $element->id }} </a></td>
-                        <td><a>{{ $element->name }}</a></td>
-                        <td class="d-none d-xl-table-cell"><a>{{ $element->slug }}</a></td>
+                        <td>{{ $element->id }}</td>
+                        <td>{{ $element->name }}</td>
+                        <td class="d-none d-xl-table-cell">{{ $element->slug }}</td>
                         </td>
                         <td class="">
                             <div class="d-flex justify-content-center">

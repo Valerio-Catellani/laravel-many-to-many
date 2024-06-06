@@ -14,19 +14,19 @@
     <tbody>
         @foreach ($elements as $element)
             <tr>
-                <td><a>{{ $element->id }} </a></td>
-                <td><a>{{ $element->title }}</a></td>
-                <td class="d-none d-xl-table-cell"><a>{{ $element->created }}</a></td>
-                <td class="d-none d-lg-table-cell"><a>
-                        @if ($element->type)
-                            {{ $element->type->name }}
-                        @else
-                            Nessun tipo
-                        @endif
-                    </a></td>
+                <td>{{ $element->id }}</td>
+                <td>{{ $element->title }}</td>
+                <td class="d-none d-xl-table-cell">{{ $element->created }}</td>
+                <td class="d-none d-lg-table-cell">
+                    @if ($element->type)
+                        {{ $element->type->name }}
+                    @else
+                        Nessun tipo
+                    @endif
+                </td>
                 <td class="d-none d-lg-table-cell">
                     @if ($element->technologies)
-                        <div class="d-flex align-items-center my-3 gap-3 ms-2">
+                        <div class="d-flex align-items-center gap-3">
                             @foreach ($element->technologies as $technology)
                                 <i class="{{ $technology->icon }} fs-3 hype-text-shadow position-relative"
                                     style="color: {{ $technology->color }};">

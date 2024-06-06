@@ -393,6 +393,10 @@ header {
         height: 40px;
         width: 40px;
     }
+    td {
+        vertical-align: middle;
+        padding: 5px 15px !important;
+    }
 }
 .pagination {
     --bs-pagination-color: $active-secondary-color !important;

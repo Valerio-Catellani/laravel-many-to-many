@@ -36,9 +36,10 @@ class TechnologyController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Technology $technology)
+    public function show($slug)
     {
-        //
+        $technology = Technology::where('slug', $slug)->firstOrFail();
+        return view("admin.technologies.show", compact("technology"));
     }
 
     /**

@@ -18,6 +18,9 @@
                     <th scope="col">#id Technology</th>
                     <th scope="col">Technology Name</th>
                     <th scope="col" class="d-none d-xl-table-cell">Technology Slug</th>
+                    <th scope="col" class="d-none d-lg-table-cell">Hex Color</th>
+                    <th scope="col" class="d-none d-lg-table-cell">Icon</th>
+                    <th scope="col" class="d-none d-lg-table-cell">Icon Class</th>
                     <th scope="col" class=" text-center">
                         Amministration Actions</th>
                 </tr>
@@ -25,9 +28,13 @@
             <tbody>
                 @foreach ($technologies as $element)
                     <tr>
-                        <td><a>{{ $element->id }} </a></td>
-                        <td><a>{{ $element->name }}</a></td>
-                        <td class="d-none d-xl-table-cell"><a>{{ $element->slug }}</a></td>
+                        <td>{{ $element->id }}</td>
+                        <td>{{ $element->name }}</td>
+                        <td class="d-none d-xl-table-cell">{{ $element->slug }}</td>
+                        <td class="d-none d-xl-table-cell" style="color: {{ $element->color }};">{{ $element->color }}</td>
+                        <td class="d-none d-xl-table-cell" style="color: {{ $element->color }};"><i
+                                class="{{ $element->icon }} fs-3"></i></td>
+                        <td class="d-none d-xl-table-cell">{{ $element->icon }}</td>
                         </td>
                         <td class="">
                             <div class="d-flex justify-content-center">
