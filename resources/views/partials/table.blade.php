@@ -30,7 +30,7 @@
                             @foreach ($element->technologies as $technology)
                                 <a class="tec-link hype-pointer position-relative"
                                     href="{{ route('admin.technologies.show', $technology->slug) }}"><i
-                                        class="{{ $technology->icon }} fs-3 hype-text-shadow position-relative hype-hover-size"
+                                        class="{{ $technology->icon }} fs-3 hype-text-shadow position-relative "
                                         style="color: {{ $technology->color }};">
                                     </i>
                                     <div class="tec-info">

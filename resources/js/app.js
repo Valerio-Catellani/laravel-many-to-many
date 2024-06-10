@@ -103,8 +103,6 @@ class HypeNav {
 }
 
 
-
-
 document.querySelectorAll('.element-delete').forEach((element) => {
     element.addEventListener('click', (event) => {
         event.preventDefault();
@@ -165,9 +163,6 @@ document.querySelectorAll('#hype-sidebar-collapse').forEach((element) => {
     })
 })
 
-
-
-
 //prendo la casella di input
 const image = document.getElementById('upload_image');
 //controllo che esista e se c'è eseguo il codice sottostante
@@ -187,21 +182,16 @@ if (image) {
     });
 }
 
-
-
-
+//animazione flag technologies
 document.querySelectorAll('.tec-link').forEach((element) => {
-    //let lunghezza = element.children[1].offsetWidth;
+    //tec-link è l'elemento padre
     const tecInfo = element.children[1];
     let lunghezza = tecInfo.offsetWidth;
-    console.log(lunghezza);
     tecInfo.style.width = `0px`;
-
+    //basta dare all'elemento la trasnistion e impostatre la sua dimensione a un tot con js
     element.addEventListener('mouseenter', () => {
-        console.log(lunghezza);
         tecInfo.style.padding = '0px 7.5px';
         tecInfo.style.width = `${lunghezza + 20}px`;
-        console.log(tecInfo.style.width);
     });
 
 
@@ -212,14 +202,14 @@ document.querySelectorAll('.tec-link').forEach((element) => {
     });
 });
 
+//preview icon techonologies
 if (document.getElementById('icon-form')) {
     document.getElementById('icon').addEventListener('input', (event) => {
-        console.log(event.target.value);
         document.getElementById('tec-icon-preview').innerHTML = `<i class="${event.target.value}"></i>`;
     })
     document.getElementById('color').addEventListener('input', (event) => {
-        console.log(event.target.value);
         document.getElementById('tec-icon-preview').style.color = `${event.target.value}`;
         console.log(document.getElementById('tec-icon-preview').style.color);
     })
 }
+
